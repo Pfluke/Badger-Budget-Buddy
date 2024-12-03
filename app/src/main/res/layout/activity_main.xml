@@ -74,7 +74,8 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:singleLine="false"
-            android:text="@string/switch_acct" />
+            android:text="@string/switch_acct"
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/viewReceipt"
@@ -88,7 +89,8 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:singleLine="false"
-            android:text="@string/view_receipt" />
+            android:text="@string/view_receipt"
+            android:textSize="12sp"/>
 
         <Button
             android:id="@+id/viewRecentTransac"
@@ -105,5 +107,17 @@
             android:text="@string/recent_transac"
             android:textSize="12sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/account_balance"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/button_layout"
+        app:layout_constraintTop_toBottomOf="@+id/button_layout"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

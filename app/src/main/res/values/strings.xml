@@ -6,4 +6,6 @@
     <string name="switch_acct"> Switch Account  </string>
     <string name="view_receipt"> View Receipts  </string>
     <string name="recent_transac"> View Recent Transactions  </string>
+    <string name="account_balance">Account Balance: </string>
+    <string name="badger_welcome"> Hello Badger!</string>
 </resources>

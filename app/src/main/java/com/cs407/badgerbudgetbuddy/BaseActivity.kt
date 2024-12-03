@@ -5,21 +5,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.app.ActivityCompat
 
-class MainActivity : BaseActivity() {
+open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+        //setContentView(R.layout.recent_transactions) // Ensure you have a layout file for this activity
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -30,16 +22,17 @@ class MainActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.bucky -> {
-                Toast.makeText(this, "Hi Badger", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Hi Badger!", Toast.LENGTH_SHORT).show()
                 true
             }
+            // logout of account
             R.id.item2 -> {
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show()
                 true
             }
             // To switch to recent transactions
             R.id.subitem1 -> {
-                Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
                 val recentTransactionsIntent = Intent(this, RecentTransactions::class.java)
                 startActivity(recentTransactionsIntent)
                 true
