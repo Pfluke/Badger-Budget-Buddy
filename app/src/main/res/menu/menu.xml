@@ -19,7 +19,7 @@
         <menu>
             <item
                 android:id="@+id/subitem1"
-                android:title="SubItem 1"/>
+                android:title="Recent Transactions"/>
             <item
                 android:id="@+id/subitem2"
                 android:title="SubItem 2"/>
