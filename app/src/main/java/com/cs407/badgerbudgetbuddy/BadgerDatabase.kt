@@ -86,12 +86,23 @@ class Converters {
 interface UserDao {
     @Insert
     suspend fun insertUser(vararg userName: User)
+    @Delete
+    suspend fun deleteUser(vararg userName: User)
+}
+
+@Dao
+interface TransactionDao {
+    @Insert
+    suspend fun insertTransaction(vararg transaction: Transaction)
+    @Delete
+    suspend fun deleteTransaction(vararg transaction: Transaction)
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class BadgerDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun transactionDao(): TransactionDao
 
     companion object {
         @Volatile
