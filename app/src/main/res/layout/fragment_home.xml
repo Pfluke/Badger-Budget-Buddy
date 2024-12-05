@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HomeFragment">
 
 
     <TextView
@@ -72,8 +72,8 @@
             android:minHeight="80dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:singleLine="false"
-            android:text="@string/switch_acct" />
+            android:text="@string/switch_acct"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/viewReceipt"
@@ -86,23 +86,22 @@
             android:minHeight="80dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:singleLine="false"
-            android:text="@string/view_receipt" />
+            android:text="@string/view_receipt"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/viewRecentTransac"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:backgroundTint="@color/button_grey"
             android:ellipsize="end"
             android:minHeight="80dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:singleLine="false"
             android:text="@string/recent_transac"
-            android:textSize="12sp" />
+             />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

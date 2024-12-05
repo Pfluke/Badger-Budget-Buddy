@@ -7,4 +7,10 @@
     <string name="view_receipt"> View Receipts  </string>
     <string name="recent_transac"> View Recent Transactions  </string>
     <string name="go_back">Go Back</string>
+    <string name="account_balance">Account Balance: </string>
+    <string name="badger_welcome">Hello Badger!</string>
+    <string name="record_transac">+ Record Another Transaction</string>
+    <string name="checking">Checking</string>
+    <string name="savings">Savings</string>
+    <string name="placeholder">Placeholder Value</string>
 </resources>
