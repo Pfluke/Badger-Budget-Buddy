@@ -6,4 +6,5 @@
     <string name="switch_acct"> Switch Account  </string>
     <string name="view_receipt"> View Receipts  </string>
     <string name="recent_transac"> View Recent Transactions  </string>
+    <string name="go_back">Go Back</string>
 </resources>

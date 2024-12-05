@@ -1,0 +1,108 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="140dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/home_text"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="92dp"
+        android:textColor="@color/black"
+        android:text="@string/curr_user"
+        app:layout_constraintStart_toEndOf="@+id/home"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/black"
+        android:text="@string/curr_acct"
+        app:layout_constraintStart_toEndOf="@+id/home"
+        app:layout_constraintTop_toBottomOf="@+id/currUser" />
+
+    <ImageView
+        android:id="@+id/bucky_img"
+        android:layout_width="75dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/home"
+        app:layout_constraintEnd_toStartOf="@+id/currUser"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        app:srcCompat="@drawable/bucky" />
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/switchAcct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/button_grey"
+            android:ellipsize="end"
+            android:minHeight="80dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:singleLine="false"
+            android:text="@string/switch_acct" />
+
+        <Button
+            android:id="@+id/viewReceipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/button_grey"
+            android:ellipsize="end"
+            android:minHeight="80dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:singleLine="false"
+            android:text="@string/view_receipt" />
+
+        <Button
+            android:id="@+id/viewRecentTransac"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/button_grey"
+            android:ellipsize="end"
+            android:minHeight="80dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:singleLine="false"
+            android:text="@string/recent_transac"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

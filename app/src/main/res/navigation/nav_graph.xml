@@ -1,0 +1,29 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.cs407.badgerbudgetbuddy.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/switchAccount"
+        android:name="SwitchAccount"
+        android:label="Switch Account"
+        tools:layout="@layout/switch_account" />
+
+    <fragment
+        android:id="@+id/viewReceipt"
+        android:name="ViewReceipts"
+        android:label="View Receipts"
+        tools:layout="@layout/view_receipts" />
+
+    <fragment
+        android:id="@+id/viewRecentTransac"
+        android:name="ViewRecentTransac"
+        android:label="View Recent Transactions"
+        tools:layout="@layout/view_recent_transac" />
+</navigation>
