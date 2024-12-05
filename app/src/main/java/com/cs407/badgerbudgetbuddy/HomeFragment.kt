@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
         val viewRecentTransacButton: Button = view.findViewById(R.id.viewRecentTransac)
 
         val navController = findNavController()
-
+//making a change
         switchAccountButton.setOnClickListener {
             navController.navigate(R.id.action_home_to_switchAccount)
         }
