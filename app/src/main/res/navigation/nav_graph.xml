@@ -24,17 +24,32 @@
         android:id="@+id/switchAccount"
         android:name="com.cs407.badgerbudgetbuddy.SwitchAccount"
         android:label="Switch Account"
-        tools:layout="@layout/switch_account" />
+        tools:layout="@layout/switch_account" >
+
+        <action
+            android:id="@+id/action_switchAccount_to_home"
+            app:destination="@id/homeFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/viewReceipts"
         android:name="com.cs407.badgerbudgetbuddy.ViewReceipts"
         android:label="View Receipts"
-        tools:layout="@layout/view_receipts" />
+        tools:layout="@layout/view_receipts" >
+
+    <action
+        android:id="@+id/action_viewReceipts_to_home"
+        app:destination="@id/homeFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/viewRecentTransac"
         android:name="com.cs407.badgerbudgetbuddy.ViewRecentTransac"
         android:label="View Recent Transactions"
-        tools:layout="@layout/view_recent_transac" />
+        tools:layout="@layout/view_recent_transac">
+
+    <action
+        android:id="@+id/action_viewRecentTransac_to_home"
+        app:destination="@id/homeFragment"/>
+    </fragment>
 </navigation>

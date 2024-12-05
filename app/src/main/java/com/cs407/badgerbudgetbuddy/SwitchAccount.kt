@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class SwitchAccount : Fragment() {
 
@@ -12,6 +14,15 @@ class SwitchAccount : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.switch_account, container, false)
+        val rootView =  inflater.inflate(R.layout.switch_account, container, false)
+
+        val backBtn: Button = rootView.findViewById<Button>(R.id.back1)
+
+        val navController = findNavController()
+
+        backBtn.setOnClickListener {
+            navController.navigate(R.id.action_switchAccount_to_home)
+        }
+        return rootView
     }
 }
