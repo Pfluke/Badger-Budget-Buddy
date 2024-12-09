@@ -13,4 +13,25 @@
     <string name="checking">Checking</string>
     <string name="savings">Savings</string>
     <string name="placeholder">Placeholder Value</string>
+    <string name="record_your_transaction">Record Your Transaction!</string>
+    <string name="submit_transac">Submit Transaction</string>
+    <string name="enter_quantity">Enter Quantity ($)</string>
+    <string name="description">Description</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="category_array">
+        <item>Food</item>
+        <item>School Supplies</item>
+        <item>Recreation</item>
+        <item>Rent</item>
+        <item>Tuition</item>
+        <item>Clothing</item>
+        <item>Emergency</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="account_array">
+        <item>Checking</item>
+        <item>Savings</item>
+    </string-array>
+
 </resources>
