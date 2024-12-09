@@ -1,25 +1,18 @@
 package com.cs407.badgerbudgetbuddy
 
 import android.content.Context
-import android.util.Log
-import androidx.paging.PagingSource
-import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Delete
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.Insert
 import androidx.room.PrimaryKey
-import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.Transaction
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
-import androidx.room.Update
-import androidx.room.Upsert
 import java.util.Date
 
 
@@ -93,9 +86,9 @@ interface UserDao {
 @Dao
 interface TransactionDao {
     @Insert
-    suspend fun insertTransaction(vararg transaction: Transaction)
+    suspend fun insertTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
     @Delete
-    suspend fun deleteTransaction(vararg transaction: Transaction)
+    suspend fun deleteTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 1)
