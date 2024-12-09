@@ -48,8 +48,31 @@
         android:label="View Recent Transactions"
         tools:layout="@layout/view_recent_transac">
 
-    <action
-        android:id="@+id/action_viewRecentTransac_to_home"
-        app:destination="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_viewRecentTransac_to_home"
+            app:destination="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_viewRecentTransac_to_AddTransac"
+            app:destination="@+id/submitTransaction"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/submitTransaction"
+        android:name="com.cs407.badgerbudgetbuddy.AddTransaction"
+        android:label="Submit Transaction"
+        tools:layout="@layout/add_transaction">
+
+        <action
+            android:id="@+id/action_addTransaction_to_recentTransac"
+            app:destination="@+id/viewRecentTransac"
+            />
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/addTransaction"-->
+<!--        android:name="com.cs407.badgerbudgetbuddy.ViewRecentTransac"-->
+<!--        android:label="Add Transaction"-->
+<!--        tools:layout="@layout/view_recent_transac">-->
+<!--        -->
+<!--    </fragment>-->
 </navigation>

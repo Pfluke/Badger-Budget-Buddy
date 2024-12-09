@@ -16,10 +16,10 @@ class ViewRecentTransac : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.view_recent_transac, container, false)
 
         val backBtn: Button = rootView.findViewById<Button>(R.id.back3)
+        val submitTransacBtn = rootView.findViewById<Button>(R.id.addTransacBtn)
 
         val navController = findNavController()
 
@@ -27,9 +27,12 @@ class ViewRecentTransac : Fragment() {
             navController.navigate(R.id.action_viewRecentTransac_to_home)
         }
 
+        submitTransacBtn.setOnClickListener {
+            navController.navigate(R.id.action_viewRecentTransac_to_AddTransac)
+        }
+
         val linearLayoutContainer = rootView.findViewById<LinearLayout>(R.id.linearLayoutContainer)
 
-        // Example data
         val data = listOf(
             Pair("Card 1", "Placeholder."),
             Pair("Card 2", "Placeholder."),
@@ -46,7 +49,6 @@ class ViewRecentTransac : Fragment() {
             Pair("Card 13", "Placeholder."),
         )
 
-        // Dynamically add cards
         for ((title, description) in data) {
             val cardView = inflater.inflate(R.layout.transaction_card, linearLayoutContainer, false)
 
