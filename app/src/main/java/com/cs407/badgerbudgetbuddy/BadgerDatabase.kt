@@ -1,6 +1,7 @@
 package com.cs407.badgerbudgetbuddy
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Delete
@@ -89,6 +90,8 @@ interface TransactionDao {
     suspend fun insertTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
     @Delete
     suspend fun deleteTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
+
+    suspend fun getAllTransactions(): List<Transaction>
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 1)
