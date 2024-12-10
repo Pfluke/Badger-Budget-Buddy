@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.android)
     val room_version = "2.6.1"
 
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-runtime:$room_version")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
