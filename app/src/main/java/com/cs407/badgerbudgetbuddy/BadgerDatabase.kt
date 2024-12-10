@@ -74,6 +74,8 @@ interface TransactionDao {
     fun getAllTransactions(): LiveData<List<Transaction>>
     @Query("DELETE FROM `Transaction`")
     fun deleteAllTransactions()
+    @Query("SELECT SUM(amount) FROM `Transaction` group by type")
+    fun getTransactionTotals(): LiveData<List<Double>>
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 2)

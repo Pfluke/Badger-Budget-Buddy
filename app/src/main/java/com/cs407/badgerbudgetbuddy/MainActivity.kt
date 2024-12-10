@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
             ?: throw IllegalStateException("NavHostFragment not found in activity_main.xml")
         val navController = navHostFragment.navController
-
 //        val db = Room.databaseBuilder(
 //            applicationContext,
 //            BadgerDatabase::class.java, "app-database"

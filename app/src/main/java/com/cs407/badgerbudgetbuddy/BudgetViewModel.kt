@@ -48,4 +48,9 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
             userDao.deleteUser(user)
         }
     }
+
+    fun getTransactionTotals(): LiveData<List<Double>> {
+        return transactionDao.getTransactionTotals()
+    }
+
 }
