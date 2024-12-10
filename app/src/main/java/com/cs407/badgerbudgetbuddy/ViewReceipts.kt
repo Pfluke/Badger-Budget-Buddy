@@ -22,18 +22,26 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import java.io.File
 
 class ViewReceipts : Fragment() {
 
     private lateinit var imageView: ImageView
+    private lateinit var receiptsRecyclerView: RecyclerView
+    private lateinit var receiptsAdapter: ReceiptsAdapter
     private val CAMERA_REQUEST_CODE = 100
+    private val imageUris = mutableListOf<Uri>()
     private var imageUri: Uri? = null
 
     private val takePictureLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
-                imageUri?.let { imageView.setImageURI(it) }
+                imageUri?.let {
+                    imageUris.add(it)
+                    receiptsAdapter.notifyItemInserted(imageUris.size - 1)
+                }
             } else {
                 Toast.makeText(requireContext(), "Image capture failed", Toast.LENGTH_SHORT).show()
             }
@@ -59,11 +67,16 @@ class ViewReceipts : Fragment() {
             navController.navigate(R.id.action_viewReceipts_to_home)
         }
 
+        receiptsRecyclerView = view.findViewById(R.id.receiptsRecyclerView)
+        receiptsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        receiptsAdapter = ReceiptsAdapter(imageUris)
+        receiptsRecyclerView.adapter = receiptsAdapter
+
         return view
     }
 
     private fun openCamera() {
-        val imageFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "receipt.jpg")
+        val imageFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "receipt_${System.currentTimeMillis()}.jpg")
         imageUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", imageFile)
 
         if (imageUri != null) {
