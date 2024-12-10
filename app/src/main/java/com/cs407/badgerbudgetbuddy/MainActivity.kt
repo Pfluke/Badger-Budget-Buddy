@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.room.Room
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
             ?: throw IllegalStateException("NavHostFragment not found in activity_main.xml")
         val navController = navHostFragment.navController
+
+//        val db = Room.databaseBuilder(
+//            applicationContext,
+//            BadgerDatabase::class.java, "app-database"
+//        ).build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

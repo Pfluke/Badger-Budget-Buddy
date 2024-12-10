@@ -11,31 +11,23 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
     private val userDao = database.userDao()
     private val transactionDao = database.transactionDao()
 
-    suspend fun addTransaction(transaction: Transaction) {
-        viewModelScope.launch {
-            transactionDao.insertTransaction(transaction)
-        }
+    fun addTransaction(transaction: Transaction) {
+        transactionDao.insertTransaction(transaction)
     }
 
-    suspend fun getTransactions(): List<androidx.room.Transaction> {
+    fun getTransactions(): LiveData<List<Transaction>> {
         return transactionDao.getAllTransactions()
     }
 
-    suspend fun deleteTransaction(transaction: Transaction) {
-        viewModelScope.launch {
-            transactionDao.deleteTransaction(transaction)
-        }
+    fun deleteTransaction(transaction: Transaction) {
+        transactionDao.deleteTransaction(transaction)
     }
 
     fun addUser(user: User) {
-        viewModelScope.launch {
-            userDao.insertUser(user)
-        }
+        userDao.insertUser(user)
     }
 
     fun deleteUser(user: User) {
-        viewModelScope.launch {
-            userDao.deleteUser(user)
-        }
+        userDao.deleteUser(user)
     }
 }

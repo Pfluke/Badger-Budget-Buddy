@@ -9,38 +9,26 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Insert
 import androidx.room.PrimaryKey
+import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.Transaction
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import java.util.Date
 
-
-
-// Define your own @Entity, @Dao and @Database
+// User Table
 @Entity
 data class User(
     @PrimaryKey(autoGenerate = true) val userId: Int = 0,
-
     val userName: String = "",
     val hashedPassword: String = "",
     val checkingBalance: Double = 0.0,
     val savingBalance: Double = 0.0,
 )
-
-@Entity(
-    primaryKeys = ["userId"],
-    foreignKeys = [
-        ForeignKey(
-            entity = User::class,
-            parentColumns = ["userId"],
-            childColumns = ["userId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
-)
+// Transaction Table
+@Entity
 data class Transaction(
+    @PrimaryKey(autoGenerate = true) val transactionId: Int = 0,
     val date: Date,
     val amount: Double,
     val description: String,
@@ -48,18 +36,9 @@ data class Transaction(
     val userId: Int
 )
 
-@Entity(
-    primaryKeys = ["userId"],
-    foreignKeys = [
-        ForeignKey(
-            entity = User::class,
-            parentColumns = ["userId"],
-            childColumns = ["userId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ]
-)
+@Entity
 data class Receipts(
+    @PrimaryKey(autoGenerate = true) val receiptId: Int = 0,
     val imageFilePath: String,
     val userId: Int
 )
@@ -79,22 +58,22 @@ class Converters {
 @Dao
 interface UserDao {
     @Insert
-    suspend fun insertUser(vararg userName: User)
+    fun insertUser(vararg userName: User)
     @Delete
-    suspend fun deleteUser(vararg userName: User)
+    fun deleteUser(vararg userName: User)
 }
 
 @Dao
 interface TransactionDao {
     @Insert
-    suspend fun insertTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
+    fun insertTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
     @Delete
-    suspend fun deleteTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
-
-    suspend fun getAllTransactions(): List<Transaction>
+    fun deleteTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
+    @Query("SELECT * FROM `Transaction`")
+    fun getAllTransactions(): LiveData<List<Transaction>>
 }
 
-@Database(entities = [User::class, Transaction::class, Receipts::class], version = 1)
+@Database(entities = [User::class, Transaction::class, Receipts::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class BadgerDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
