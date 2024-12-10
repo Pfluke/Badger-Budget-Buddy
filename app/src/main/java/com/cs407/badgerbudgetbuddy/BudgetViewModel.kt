@@ -2,6 +2,7 @@ package com.cs407.badgerbudgetbuddy
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
@@ -10,13 +11,17 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
     private val userDao = database.userDao()
     private val transactionDao = database.transactionDao()
 
-    fun addTransaction(transaction: Transaction) {
+    suspend fun addTransaction(transaction: Transaction) {
         viewModelScope.launch {
             transactionDao.insertTransaction(transaction)
         }
     }
 
-    fun deleteTransaction(transaction: Transaction) {
+    suspend fun getTransactions(): List<androidx.room.Transaction> {
+        return transactionDao.getAllTransactions()
+    }
+
+    suspend fun deleteTransaction(transaction: Transaction) {
         viewModelScope.launch {
             transactionDao.deleteTransaction(transaction)
         }

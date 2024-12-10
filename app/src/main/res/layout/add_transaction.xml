@@ -44,35 +44,44 @@
 
         <EditText
             android:id="@+id/editTransacQty"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
             android:inputType="number"
-            android:text="@string/enter_quantity" />
+            android:hint="@string/enter_quantity"
+            android:minHeight="48dp"
+            android:minWidth="48dp"/>
 
         <Spinner
             android:id="@+id/category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:entries="@array/category_array" />
+            android:entries="@array/category_array"
+            android:minHeight="48dp"
+            android:minWidth="48dp"/>
 
         <Spinner
             android:id="@+id/account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:entries="@array/account_array" />
+            android:entries="@array/account_array"
+            android:minHeight="48dp"
+            android:minWidth="48dp"/>
 
         <EditText
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
             android:inputType="text"
-            android:text="@string/description" />
+            android:hint="@string/description"
+            android:minHeight="48dp"
+            android:minWidth="48dp"/>
+
     </LinearLayout>
 
     <Button
