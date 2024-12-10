@@ -29,11 +29,12 @@ data class User(
 @Entity
 data class Transaction(
     @PrimaryKey(autoGenerate = true) val transactionId: Int = 0,
-    val date: Date,
+    // Date is temporarily removed in order to test DB functionality
+    //val date: Date,
     val amount: Double,
     val description: String,
     val type: String,
-    val userId: Int
+    val userId: Int = 1
 )
 
 @Entity
@@ -71,6 +72,8 @@ interface TransactionDao {
     fun deleteTransaction(vararg transaction: com.cs407.badgerbudgetbuddy.Transaction)
     @Query("SELECT * FROM `Transaction`")
     fun getAllTransactions(): LiveData<List<Transaction>>
+    @Query("DELETE FROM `Transaction`")
+    fun deleteAllTransactions()
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 2)
