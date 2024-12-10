@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.room.Room
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,8 +34,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Hi Badger", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.item2 -> {
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show()
+            R.id.item2 -> { // Logging out will reset your transaction table
+                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
+                val budgetViewModel = BudgetViewModel(application)
+                budgetViewModel.deleteAllTransaction()
                 true
             }
             R.id.subitem1 -> {
