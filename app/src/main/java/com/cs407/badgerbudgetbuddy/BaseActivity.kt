@@ -27,7 +27,9 @@ open class BaseActivity : AppCompatActivity() {
             }
             // logout of account
             R.id.item2 -> {
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Logout/Reset Transactions", Toast.LENGTH_SHORT).show()
+                val viewModel = BudgetViewModel(application)
+                viewModel.deleteAllTransaction()
                 true
             }
             // To switch to recent transactions

@@ -11,7 +11,8 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
+import com.cs407.badgerbudgetbuddy.BudgetViewModel
+import com.cs407.badgerbudgetbuddy.BadgerDatabase
 class AddTransaction : Fragment() {
 
     override fun onCreateView(
@@ -31,6 +32,8 @@ class AddTransaction : Fragment() {
 
 
         val navController = findNavController()
+        val vm = BudgetViewModel(requireActivity().application)
+
 
         submitBtn.setOnClickListener {
             if (quantity.text.isBlank() || quantity.text.equals("Enter Quantity (\$)") || category.selectedItem == null || account.selectedItem == null || description.text.isEmpty()) {
@@ -38,6 +41,10 @@ class AddTransaction : Fragment() {
             } else {
                 navController.navigate(R.id.action_addTransaction_to_recentTransac)
                 Toast.makeText(activity, "Transaction successfully submitted!", Toast.LENGTH_SHORT).show()
+                val amount = quantity.text.toString().toDouble()
+                val transaction = Transaction(amount = amount, description = description.text.toString(), type = category.selectedItem.toString())
+                vm.addTransaction(transaction)
+
             }
         }
 

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BudgetViewModel (application: Application) : AndroidViewModel(application){
@@ -11,23 +12,40 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
     private val userDao = database.userDao()
     private val transactionDao = database.transactionDao()
 
+    val transactions: LiveData<List<Transaction>> = transactionDao.getAllTransactions()
     fun addTransaction(transaction: Transaction) {
-        transactionDao.insertTransaction(transaction)
+        viewModelScope.launch(Dispatchers.IO) {
+            transactionDao.insertTransaction(transaction)
+        }
     }
 
-    fun getTransactions(): LiveData<List<Transaction>> {
-        return transactionDao.getAllTransactions()
-    }
+//    fun getTransactions(): LiveData<List<Transaction>> {
+//        return transactionDao.getAllTransactions()
+//    }
+
 
     fun deleteTransaction(transaction: Transaction) {
-        transactionDao.deleteTransaction(transaction)
+        viewModelScope.launch(Dispatchers.IO) {
+            transactionDao.deleteTransaction(transaction)
+        }
+    }
+
+    // mostly for test purposes
+    fun deleteAllTransaction() {
+        viewModelScope.launch(Dispatchers.IO) {
+            transactionDao.deleteAllTransactions()
+        }
     }
 
     fun addUser(user: User) {
-        userDao.insertUser(user)
+        viewModelScope.launch(Dispatchers.IO) {
+            userDao.insertUser(user)
+        }
     }
 
     fun deleteUser(user: User) {
-        userDao.deleteUser(user)
+        viewModelScope.launch(Dispatchers.IO) {
+            userDao.deleteUser(user)
+        }
     }
 }

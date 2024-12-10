@@ -37,6 +37,8 @@ android {
 }
 dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.firebase.vertexai)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     val room_version = "2.6.1"
 
     ksp("androidx.room:room-compiler:$room_version")
