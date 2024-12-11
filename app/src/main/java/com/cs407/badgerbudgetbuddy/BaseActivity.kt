@@ -33,16 +33,16 @@ open class BaseActivity : AppCompatActivity() {
                 true
             }
             // To switch to recent transactions
-            R.id.subitem1 -> {
-                // Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
-                val recentTransactionsIntent = Intent(this, RecentTransactions::class.java)
-                startActivity(recentTransactionsIntent)
-                true
-            }
-            R.id.subitem2 -> {
-                Toast.makeText(this, "SubItem 2 selected", Toast.LENGTH_SHORT).show()
-                true
-            }
+//            R.id.subitem1 -> {
+//                // Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
+//                val recentTransactionsIntent = Intent(this, RecentTransactions::class.java)
+//                startActivity(recentTransactionsIntent)
+//                true
+//            }
+//            R.id.subitem2 -> {
+//                Toast.makeText(this, "SubItem 2 selected", Toast.LENGTH_SHORT).show()
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -40,14 +40,14 @@ class MainActivity : BaseActivity() {
                 budgetViewModel.deleteAllTransaction()
                 true
             }
-            R.id.subitem1 -> {
-                Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.subitem2 -> {
-                Toast.makeText(this, "SubItem 2 selected", Toast.LENGTH_SHORT).show()
-                true
-            }
+//            R.id.subitem1 -> {
+//                Toast.makeText(this, "SubItem 1 selected", Toast.LENGTH_SHORT).show()
+//                true
+//            }
+//            R.id.subitem2 -> {
+//                Toast.makeText(this, "SubItem 2 selected", Toast.LENGTH_SHORT).show()
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
