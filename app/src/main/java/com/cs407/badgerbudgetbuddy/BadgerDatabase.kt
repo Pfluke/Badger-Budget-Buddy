@@ -80,8 +80,8 @@ interface TransactionDao {
     fun getAllTransactions(): LiveData<List<Transaction>>
     @Query("DELETE FROM `Transaction`")
     fun deleteAllTransactions()
-    @Query("SELECT SUM(amount), type FROM `Transaction` group by type")
-    fun getTransactionTotals(): LiveData<TransactionTotal>
+    @Query("SELECT SUM(amount) as amount, type FROM `Transaction` group by type")
+    fun getTransactionTotals(): LiveData<List<TransactionTotal>>
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 2)

@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -80,23 +81,18 @@ class HomeFragment : Fragment() {
         pieChart.setEntryLabelTextSize(12f)
 
         val bv = ViewModelProvider(this).get(BudgetViewModel::class.java)
-        val transactionArray = bv.getTransactionTotals()
-        val entries: ArrayList<PieEntry> = ArrayList()
+        val transactionTotals: LiveData<List<TransactionTotal>> = bv.getTransactionTotals()
+        transactionTotals.observe(viewLifecycleOwner, Observer { totals ->
+            if (totals != null && totals.isNotEmpty()) {
+                val entries = ArrayList<PieEntry>()
 
-        // Observing transaction data
-        transactionArray.observe(viewLifecycleOwner, Observer { list ->
-            if (list != null && list.isNotEmpty()) {
-                val categories = listOf("Food", "School Supplies", "Recreation", "Rent", "Tuition", "Clothing", "Emergency", "Other") // Example categories
-                val quantityArray = ArrayList(list)
-
-                for ((index, value) in quantityArray.withIndex()) {
-                    // Ensure the index does not exceed the categories list size
-                    val label = if (index < categories.size) categories[index] else "Other"
-                    entries.add(PieEntry(value, label))
+                // Convert each TransactionTotal into a PieEntry
+                for (total in totals) {
+                    entries.add(PieEntry(total.amount ?: 0f, total.type))
                 }
 
                 // Create the dataset and update the chart
-                val dataSet = PieDataSet(entries, "")
+                val dataSet = PieDataSet(entries, "Expenses")
                 dataSet.setDrawIcons(false)
                 dataSet.sliceSpace = 3f
                 dataSet.iconsOffset = MPPointF(0f, 40f)

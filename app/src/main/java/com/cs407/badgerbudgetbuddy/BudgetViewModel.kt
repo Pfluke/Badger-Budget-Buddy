@@ -13,6 +13,7 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
     private val transactionDao = database.transactionDao()
 
     val transactions: LiveData<List<Transaction>> = transactionDao.getAllTransactions()
+
     fun addTransaction(transaction: Transaction) {
         viewModelScope.launch(Dispatchers.IO) {
             transactionDao.insertTransaction(transaction)
@@ -49,8 +50,7 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getTransactionTotals(): LiveData<TransactionTotal> {
+    fun getTransactionTotals(): LiveData<List<TransactionTotal>> {
         return transactionDao.getTransactionTotals()
     }
-
 }
