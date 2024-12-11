@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.firebase.vertexai)
     implementation(libs.androidx.lifecycle.viewmodel.android)
+    implementation(libs.vision.common)
     val room_version = "2.6.1"
     implementation("com.google.mlkit:face-detection:16.1.5")
 

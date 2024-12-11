@@ -139,11 +139,13 @@ class ViewReceipts : Fragment() {
                     //toTextBox(getString(R.string.error), getString(R.string.text_recognition_error))
                 }
                 else {
-                    val regex = Regex("\\d*\\.\\d*")
+                    val regex = Regex("\\d+\\.\\d+")
+
                     var largest: Double = 0.0
                     for (block in blocks) {
                         val matchResult = regex.find(block.text)
-                        if(block.text.contains(regex) && matchResult != null) {
+                        //if(block.text.contains(regex) && matchResult != null) {
+                        if (matchResult != null) {
                             val amount = matchResult.value.toDouble()
                             if(amount > largest) {
                                 largest = amount
