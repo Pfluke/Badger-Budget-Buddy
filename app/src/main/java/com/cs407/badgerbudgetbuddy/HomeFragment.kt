@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         pieChart.setRotationEnabled(true)
         pieChart.setHighlightPerTapEnabled(true)
         pieChart.animateY(1400, Easing.EaseInOutQuad)
-        pieChart.legend.isEnabled = false
+        pieChart.legend.isEnabled = true
         pieChart.setEntryLabelColor(Color.WHITE)
         pieChart.setEntryLabelTextSize(12f)
 
@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         entries.add(PieEntry(10f))
         entries.add(PieEntry(30f))
 
-        val dataSet = PieDataSet(entries, "Mobile OS")
+        val dataSet = PieDataSet(entries, "Food")
         dataSet.setDrawIcons(false)
         dataSet.sliceSpace = 3f
         dataSet.iconsOffset = MPPointF(0f, 40f)

@@ -63,8 +63,8 @@ class ViewRecentTransac : Fragment() {
                 for (transaction in transactions) {
                     val cardView = inflater.inflate(R.layout.transaction_card, linearLayoutContainer, false)
                     //Log.d("DatabaseLog", transactionViewModel.getTransactionTotals().toString())
-                    val cardTitle: TextView = cardView.findViewById(R.id.cardTitle)
-                    val cardDescription: TextView = cardView.findViewById(R.id.cardDescription)
+                    val cardTitle: TextView = cardView.findViewById(R.id.title)
+                    val cardDescription: TextView = cardView.findViewById(R.id.description)
 
                     cardTitle.text = transaction.type
                     cardDescription.text = transaction.description

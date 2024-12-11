@@ -1,4 +1,5 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,26 +8,66 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/cardTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <!-- Title TextView (Top-Left Quadrant) -->
+
+        <!-- Right-aligned TextView (Top-Right Quadrant) -->
+
+        <!-- Description TextView (Bottom-Left Quadrant) -->
+
+        <!-- Date TextView (Bottom-Right Quadrant) -->
 
         <TextView
-            android:id="@+id/cardDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_width="115dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="16dp"
+            android:text="Title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="94dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="136dp"
+            android:layout_marginBottom="28dp"
+            android:text="Right Side"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/cardDate"
+            app:layout_constraintStart_toEndOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="175dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="16dp"
             android:text="Description"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+             />
+
+        <TextView
+            android:id="@+id/cardDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="12/10/2024"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+             />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
