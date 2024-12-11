@@ -40,7 +40,13 @@ dependencies {
     implementation(libs.firebase.vertexai)
     implementation(libs.androidx.lifecycle.viewmodel.android)
     val room_version = "2.6.1"
+    implementation("com.google.mlkit:face-detection:16.1.5")
 
+    // text recognition
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+
+    // image labeling
+    implementation("com.google.mlkit:image-labeling:17.0.7")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-runtime:$room_version")
