@@ -17,10 +17,14 @@ class SwitchAccount : Fragment() {
         val rootView =  inflater.inflate(R.layout.switch_account, container, false)
 
         val backBtn: Button = rootView.findViewById<Button>(R.id.back1)
+        val but1: Button = rootView.findViewById<Button>(R.id.button)
 
         val navController = findNavController()
 
         backBtn.setOnClickListener {
+            navController.navigate(R.id.action_switchAccount_to_home)
+        }
+        but1.setOnClickListener {
             navController.navigate(R.id.action_switchAccount_to_home)
         }
         return rootView
