@@ -6,9 +6,9 @@
     <color name="button_green">#37A80D</color>
     <color name="button_blue">#176EDB</color>
     <color name="red">#C5050C</color>
-    <color name="purple_200">#0F9D58</color>
-    <color name="purple_500">#0F9D58</color>
-    <color name="purple_700">#0F9D58</color>
+    <color name="purple">#8316EF</color>
+    <color name="orange">#ED6002</color>
+    <color name="seafoam">#0F9D58</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="grey">#aaa</color>

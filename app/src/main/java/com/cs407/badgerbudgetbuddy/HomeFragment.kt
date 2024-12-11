@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.graphics.Color
 import android.graphics.Typeface
+import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.cs407.badgerbudgetbuddy.R
 import com.github.mikephil.charting.animation.Easing
@@ -56,60 +60,72 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupPieChart() {
-        // Setting up the PieChart (similar to your original code)
         pieChart.setUsePercentValues(true)
-        pieChart.getDescription().setEnabled(false)
+        pieChart.description.isEnabled = false
         pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
-        pieChart.setDragDecelerationFrictionCoef(0.95f)
-        pieChart.setDrawHoleEnabled(true)
+        pieChart.dragDecelerationFrictionCoef = 0.95f
+        pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
         pieChart.setTransparentCircleColor(Color.WHITE)
         pieChart.setTransparentCircleAlpha(110)
-        pieChart.setHoleRadius(58f)
-        pieChart.setTransparentCircleRadius(61f)
+        pieChart.holeRadius = 58f
+        pieChart.transparentCircleRadius = 61f
         pieChart.setDrawCenterText(true)
-        pieChart.setRotationAngle(0f)
-        pieChart.setRotationEnabled(true)
-        pieChart.setHighlightPerTapEnabled(true)
+        pieChart.rotationAngle = 0f
+        pieChart.isRotationEnabled = true
+        pieChart.isHighlightPerTapEnabled = true
         pieChart.animateY(1400, Easing.EaseInOutQuad)
         pieChart.legend.isEnabled = true
-        pieChart.setEntryLabelColor(Color.WHITE)
+        pieChart.setEntryLabelColor(Color.BLACK)
         pieChart.setEntryLabelTextSize(12f)
 
-        // Create data entries for the pie chart
+        val bv = ViewModelProvider(this).get(BudgetViewModel::class.java)
+        val transactionArray = bv.getTransactionTotals()
         val entries: ArrayList<PieEntry> = ArrayList()
-        entries.add(PieEntry(40f))
-        entries.add(PieEntry(20f))
-        entries.add(PieEntry(10f))
-        entries.add(PieEntry(30f))
 
-        val dataSet = PieDataSet(entries, "Food")
-        dataSet.setDrawIcons(false)
-        dataSet.sliceSpace = 3f
-        dataSet.iconsOffset = MPPointF(0f, 40f)
-        dataSet.selectionShift = 5f
+        // Observing transaction data
+        transactionArray.observe(viewLifecycleOwner, Observer { list ->
+            if (list != null && list.isNotEmpty()) {
+                val categories = listOf("Food", "School Supplies", "Recreation", "Rent", "Tuition", "Clothing", "Emergency", "Other") // Example categories
+                val quantityArray = ArrayList(list)
 
-        // Set colors
-        val colors: ArrayList<Int> = ArrayList()
-        colors.add(resources.getColor(R.color.purple_200))
-        colors.add(resources.getColor(R.color.yellow))
-        colors.add(resources.getColor(R.color.red))
-        colors.add(resources.getColor(R.color.teal_200))
+                for ((index, value) in quantityArray.withIndex()) {
+                    // Ensure the index does not exceed the categories list size
+                    val label = if (index < categories.size) categories[index] else "Other"
+                    entries.add(PieEntry(value, label))
+                }
 
-        dataSet.colors = colors
+                // Create the dataset and update the chart
+                val dataSet = PieDataSet(entries, "")
+                dataSet.setDrawIcons(false)
+                dataSet.sliceSpace = 3f
+                dataSet.iconsOffset = MPPointF(0f, 40f)
+                dataSet.selectionShift = 5f
 
-        // Create and set the PieData
-        val data = PieData(dataSet)
-        data.setValueFormatter(PercentFormatter())
-        data.setValueTextSize(15f)
-        data.setValueTypeface(Typeface.DEFAULT_BOLD)
-        data.setValueTextColor(Color.WHITE)
-        pieChart.setData(data)
+                // Set colors
+                val colors = listOf(
+                    resources.getColor(R.color.button_green),
+                    resources.getColor(R.color.button_blue),
+                    resources.getColor(R.color.red),
+                    resources.getColor(R.color.purple),
+                    resources.getColor(R.color.orange),
+                    resources.getColor(R.color.seafoam),
+                    resources.getColor(R.color.red),
+                    resources.getColor(R.color.teal_200)
+                )
 
-        // Undo highlights
-        pieChart.highlightValues(null)
+                dataSet.colors = colors
 
-        // Refresh the chart
-        pieChart.invalidate()
+                val data = PieData(dataSet)
+                data.setValueFormatter(PercentFormatter())
+                data.setValueTextSize(15f)
+                data.setValueTypeface(Typeface.DEFAULT_BOLD)
+                data.setValueTextColor(Color.BLACK)
+
+                pieChart.data = data
+                pieChart.highlightValues(null)
+                pieChart.invalidate()
+            }
+        })
     }
 }
