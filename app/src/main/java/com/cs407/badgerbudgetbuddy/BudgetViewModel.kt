@@ -49,7 +49,7 @@ class BudgetViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getTransactionTotals(): LiveData<List<Float>> {
+    fun getTransactionTotals(): LiveData<TransactionTotal> {
         return transactionDao.getTransactionTotals()
     }
 

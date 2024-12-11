@@ -16,6 +16,12 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import java.util.Date
 
+
+data class TransactionTotal(
+    val amount: Float?,
+    val type: String
+)
+
 // User Table
 @Entity
 data class User(
@@ -74,8 +80,8 @@ interface TransactionDao {
     fun getAllTransactions(): LiveData<List<Transaction>>
     @Query("DELETE FROM `Transaction`")
     fun deleteAllTransactions()
-    @Query("SELECT SUM(amount) FROM `Transaction` group by type")
-    fun getTransactionTotals(): LiveData<List<Float>>
+    @Query("SELECT SUM(amount), type FROM `Transaction` group by type")
+    fun getTransactionTotals(): LiveData<TransactionTotal>
 }
 
 @Database(entities = [User::class, Transaction::class, Receipts::class], version = 2)
