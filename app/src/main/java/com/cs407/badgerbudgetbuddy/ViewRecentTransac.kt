@@ -65,9 +65,14 @@ class ViewRecentTransac : Fragment() {
                     //Log.d("DatabaseLog", transactionViewModel.getTransactionTotals().toString())
                     val cardTitle: TextView = cardView.findViewById(R.id.title)
                     val cardDescription: TextView = cardView.findViewById(R.id.description)
+                    val cardAmount: TextView = cardView.findViewById(R.id.quantity)
+                    val cardDate: TextView = cardView.findViewById(R.id.cardDate)
 
                     cardTitle.text = transaction.type
                     cardDescription.text = transaction.description
+                    cardAmount.text = transaction.amount.toString()
+                    //val date = transaction.date
+
 
                     linearLayoutContainer.addView(cardView)
                 }
