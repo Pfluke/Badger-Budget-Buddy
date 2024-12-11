@@ -92,13 +92,12 @@ class HomeFragment : Fragment() {
                 }
 
                 // Create the dataset and update the chart
-                val dataSet = PieDataSet(entries, "Expenses")
+                val dataSet = PieDataSet(entries, "")
                 dataSet.setDrawIcons(false)
                 dataSet.sliceSpace = 3f
                 dataSet.iconsOffset = MPPointF(0f, 40f)
                 dataSet.selectionShift = 5f
 
-                // Set colors
                 val colors = listOf(
                     resources.getColor(R.color.button_green),
                     resources.getColor(R.color.button_blue),

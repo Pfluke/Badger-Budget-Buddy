@@ -25,7 +25,7 @@
         android:id="@+id/currUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="105dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="27dp"
         android:text="@string/curr_user"
         android:textColor="@color/black"
@@ -128,13 +128,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <TextView
             android:id="@+id/idTVHead"
@@ -166,44 +166,44 @@
             android:orientation="horizontal"
             android:weightSum="3">
 
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:drawableLeft="@drawable/ic_circle"-->
-<!--                android:drawableTint="@color/purple_200"-->
-<!--                android:gravity="center"-->
-<!--                android:padding="4dp"-->
-<!--                android:text="Android"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/black" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:drawableLeft="@drawable/ic_circle"-->
+            <!--                android:drawableTint="@color/purple_200"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:text="Android"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textColor="@color/black" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:drawableLeft="@drawable/ic_circle"-->
-<!--                android:drawableTint="@color/yellow"-->
-<!--                android:gravity="center"-->
-<!--                android:padding="4dp"-->
-<!--                android:text="Apple"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/black" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:drawableLeft="@drawable/ic_circle"-->
+            <!--                android:drawableTint="@color/yellow"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:text="Apple"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textColor="@color/black" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="3dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:drawableLeft="@drawable/ic_circle"-->
-<!--                android:drawableTint="@color/red"-->
-<!--                android:gravity="center"-->
-<!--                android:padding="4dp"-->
-<!--                android:text="Microsoft"-->
-<!--                android:textAlignment="center"-->
-<!--                android:textColor="@color/black" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="3dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:drawableLeft="@drawable/ic_circle"-->
+            <!--                android:drawableTint="@color/red"-->
+            <!--                android:gravity="center"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:text="Microsoft"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textColor="@color/black" />-->
         </LinearLayout>
 
     </RelativeLayout>
